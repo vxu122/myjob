@@ -24,7 +24,7 @@ def register_card_no(url,cardno,name):
     '''无界面打开二维码里面的食堂URL，注册用户信息'''
     chrome_options=Options()
     chrome_options.add_argument('--headless')
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options,executable_path='/usr/bin/chromedriver')
     driver.get(url)
     print(driver.page_source)
     #driver.maximize_window()
