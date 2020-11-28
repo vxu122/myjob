@@ -22,13 +22,17 @@ def get_seat_no(path):
         return url
 
 def register_card_no(url,cardno,name):
+    logger.debug("in register card function----------------------")
     '''无界面打开二维码里面的食堂URL，注册用户信息'''
     chrome_options=Options()
     chrome_options.add_argument('--headless')
+    chrome_options.binary_location = "/opt/google/chrome/chrome"
     #driver = webdriver.Chrome(options=chrome_options)
-    driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', options=chrome_options)
+    driver = webdriver.Chrome(executable_path='/home/jenkins_home/mine/chromedriver', options=chrome_options)
+    #driver = webdriver.Chrome(executable_path='/home/jenkins_home/mine/chromedriver', service_log_path='/home/jenkins_home/mine', options=chrome_options)
     driver.get(url)
-    print(driver.page_source)
+    logger.debug(url)
+    #print(driver.page_source)
     #logger.debug(driver.page_source)
     #driver.maximize_window()
     time.sleep(1)
@@ -64,7 +68,7 @@ def logger():
 logger()
 logger.debug('-------现在开始注册------------------')
 #配置二维码图片地址和文件名
-filepath='/home/ubuntu/vivi'
+filepath='/home/jenkins_home/mine/'
 files=['image.jpg','seat1.jpg','seat2.jpg']
 
 #配置用户表位置和读取用户信息
